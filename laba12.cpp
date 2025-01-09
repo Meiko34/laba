@@ -59,10 +59,11 @@ int main() {
          cout <<"Сгенерированная матрица:\n";  
     for (const auto& row : matrix) {
         for (char color : row) {
-            cout << color <<""; // Выводим букву цвета
+            cout << color <<" "; // Выводим букву цвета
             } cout << endl; // Переход на новую строку после каждой строки матрицы
             } 
-            unordered_map<char, int> colorCount; // Счетчик для областей одинакового цвета
+
+    unordered_map<char, int> colorCount; // Счетчик для областей одинакового цвета
     vector<vector<bool>> visited(N, vector<bool>(M, false)); // Вектор для отслеживания посещенных ячеек
 
      char largestColor = '\0'; // Для хранения цвета самой большой области
@@ -81,5 +82,14 @@ int main() {
                     } }} }
 
     // Вывод результата
-    cout <<"Самая большая область цвета" << largestColor <<" с размером" << largestArea <<":\n";    
+   cout <<"Самая большая область цвета " << largestColor <<" с размером " << largestArea <<":\n";
+
+// Визуализация самой большой области
+for (int i = 0; i < N; i++) {
+    for (int j = 0; j < M; j++) {
+        if (matrix[i][j] == largestColor) {
+            cout << COLOR_CODES[largestColor - 'A'] << matrix[i][j] << RESET_COLOR<< " "; // Выводим цвет с ANSI-кодом
+            } else {
+            cout << matrix[i][j] << " "; // Выводим остальные цвета без изменений
+            }}}
     return 0;}
