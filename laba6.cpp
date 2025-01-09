@@ -42,4 +42,42 @@ for (int i = 0; i < m; ++i) {
 
 matrix = newMatrix; // Замена старой матрицы на новую
 }
+ 
+ int main() {
 
+int rows, cols;
+
+
+// Запрос количества строк и столбцов у пользователя
+cout <<"Введите количество строк:"; cin >> rows;
+cout <<"Введите количество столбцов:"; cin >> cols;
+
+
+// Инициализация генератора случайных чисел
+srand(static_cast<unsigned int>(time(nullptr))); // Используем текущее время для инициализации
+
+
+// Создание матрицы
+vector<vector<int>> matrix(rows, vector<int>(cols));
+
+
+// Заполнение матрицы случайными числами
+for (int i = 0; i < rows; ++i) {
+for (int j = 0; j < cols; ++j) {
+matrix[i][j] = rand() % 100; // Случайные числа от 0 до 99
+} }
+
+
+// Печать исходной матрицы
+cout <<"Исходная матрица:" << endl;
+printMatrix(matrix);
+
+
+    // Обмен столбцов
+    swapColumns(matrix); 
+
+    // Печать измененной матрицы
+    cout <<"Матрица после изменения столбцов:" << endl;
+    printMatrix(matrix); 
+
+    return 0;}
