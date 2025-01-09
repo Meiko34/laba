@@ -65,6 +65,9 @@ int main() {
             unordered_map<char, int> colorCount; // Счетчик для областей одинакового цвета
     vector<vector<bool>> visited(N, vector<bool>(M, false)); // Вектор для отслеживания посещенных ячеек
 
+     char largestColor = '\0'; // Для хранения цвета самой большой области
+    int largestArea = 0; // Для хранения размера самой большой области
+    
     // Поиск областей
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
@@ -72,5 +75,11 @@ int main() {
                 int count = 0;
                 dfs(matrix, i, j, matrix[i][j], visited, count); // Поиск области
                 colorCount[matrix[i][j]] = max(colorCount[matrix[i][j]], count); // Обновление счетчика
-                } }}    
-                return 0;}
+                 if (count > largestArea) {
+                    largestArea = count; // Обновляем размер самой большой области
+                    largestColor = matrix[i][j]; // Обновляем цвет самой большой области
+                    } }} }
+
+    // Вывод результата
+    cout <<"Самая большая область цвета" << largestColor <<" с размером" << largestArea <<":\n";    
+    return 0;}
